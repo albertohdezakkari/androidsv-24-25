@@ -17,20 +17,27 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSaludar;
 
     // onload: Javascript //
+
+    /////////PATRÓN SINGLETON
+    private static MainActivity padre;
+    public static MainActivity getInstance(){
+        return padre;
+    }
+
+    ////// FIN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // SINGLETON
+        this.padre = this;
+        // FIN SINGLETON
+        ServicePantallaPrincipal service = new ServicePantallaPrincipal(); // 0x5454af
         btnSaludar = findViewById(R.id.btnSaludar);
         btnSaludar.setOnClickListener(new View.OnClickListener() {
-            // ServicePantallaPrincipal.saludar();
-            ServicePantallaPrincipal service = new ServicePantallaPrincipal();
-                    // service.saludar();
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,
-                            "Saludar Android!",
-                            Toast.LENGTH_SHORT).show();
+                service.saludar();
             }
         });
         // setContentView(R.layout.activity_main);
