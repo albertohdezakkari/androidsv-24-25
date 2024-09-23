@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/txtEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="58dp"
+        android:text=""
+        android:hint="Escribe tu email ...."/>
 
     <Button
-        android:id="@+id/btnSaludar2"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Saludar desde la 2ª pantalla" />
