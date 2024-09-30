@@ -5,9 +5,21 @@ import android.widget.Toast;
 
 import com.example.a004singleton.MainActivity;
 import com.example.a004singleton.MainActivity2;
+import com.example.a004singleton.listeners.MyListener;
 
 public class ServicePantallaPrincipal {
+    private MyListener myListener;
+    private MyListener myListener1;
 
+
+    public void setMyListener(MyListener myListener){
+        this.myListener = myListener; // 0x2550AB
+    }
+    public void simularAccionDelListener(){
+        if(myListener!=null){
+            myListener.onSaludar(); // 0x2550AB
+        }
+    }
     /*public ServicePantallaPrincipal(MainActivity padre){
         this.padre = padre;
     }*/

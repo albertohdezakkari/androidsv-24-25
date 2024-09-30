@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.a004singleton.data.GlovoData;
+import com.example.a004singleton.listeners.MyListener;
 import com.example.a004singleton.services.ServicePantallaPrincipal;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,12 +37,27 @@ public class MainActivity extends AppCompatActivity {
         // FIN SINGLETON
         ServicePantallaPrincipal service = new ServicePantallaPrincipal(); // 0x5454af
         btnSaludar = findViewById(R.id.btnSaludar01);
+
         btnSaludar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 service.saludar();
             }
         });
+        // SIMULAR UN BOTÓN
+
+        service.setMyListener(new MyListener() {
+            @Override
+            public void onSaludar() {
+                Toast.makeText(MainActivity.this,
+                        "Saludar myListener", Toast.LENGTH_SHORT).show();
+            }});
+            /*@Override
+            public void onSaludar2() {
+
+            }*/
+        service.simularAccionDelListener();
+
         if(GlovoData.getEmail()!= null && GlovoData.getEmail().length()>0){
             String email = GlovoData.getEmail();
             Toast.makeText(getBaseContext(), "Gracias: " + email,
