@@ -1,31 +1,29 @@
 package com.example.loginandroid_29_09_2023.beans;
 
 public class User {
-    private String username;
-    private String token; // Puedes agregar otros campos según tus necesidades
+    private String id;
+    private String password; // Puedes agregar otros campos según tus necesidades
 
-    public User(String username, String token) {
-        this.username = username;
-        this.token = token;
-    }
-    public User() {
-    }
-    public String getUsername() {
-        return username;
+    public User(String id, String password) {
+        this.id = id;
+        this.password = password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getId() {
+        return id;
     }
 
-    public String getToken() {
-        return token;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getPassword() {
+        return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     // Getters y setters
 }

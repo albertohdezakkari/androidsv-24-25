@@ -6,6 +6,7 @@ import com.example.loginandroid_29_09_2023.beans.User;
 import com.example.loginandroid_29_09_2023.login_user.ContractLoginUser;
 import com.example.loginandroid_29_09_2023.login_user.model.data.MyData;
 import com.example.loginandroid_29_09_2023.login_user.presenter.LoginUserPresenter;
+import com.example.loginandroid_29_09_2023.utils.ApiResponse;
 import com.example.loginandroid_29_09_2023.utils.ApiService;
 import com.example.loginandroid_29_09_2023.utils.RetrofitCliente;
 
@@ -17,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginUserModel implements ContractLoginUser.Model {
-    private static final String IP_BASE = "169.254.225.61:8080";
+    private static final String IP_BASE = "192.168.104.50:3000";
     private LoginUserPresenter presenter;
     public LoginUserModel(LoginUserPresenter presenter){
         this.presenter = presenter;
@@ -27,18 +28,18 @@ public class LoginUserModel implements ContractLoginUser.Model {
     @Override
     public void loginAPI(User user, final OnLoginUserListener onLoginUserListener) {
         // Crear una instancia de ApiService
-        ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
+        ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/").
                 create(ApiService.class);
 
 // Realizar la solicitud al Servlet
         // Call<MyData> call = apiService.getMyData("1");
-        Call<MyData> call = apiService.getDataUser ("USER.LOGIN");
-        call.enqueue(new Callback<MyData>() {
+        Call<ApiResponse> call = apiService.login ("prueba@example.com","password1");
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<MyData> call, Response<MyData> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     // Procesar la respuesta aquí
-                    MyData myData = response.body();
+                    ApiResponse myData = response.body();
 
                     //String message = myData.getMessage();
 
@@ -61,7 +62,7 @@ public class LoginUserModel implements ContractLoginUser.Model {
             }
 
             @Override
-            public void onFailure(Call<MyData> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 // Manejar errores de red o del servidor
                 Log.e("Response Error", "Cuerpo de error: " + t.getMessage());
             }

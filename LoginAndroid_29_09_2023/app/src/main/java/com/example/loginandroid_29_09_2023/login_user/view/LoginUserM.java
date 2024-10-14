@@ -35,7 +35,6 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
         setContentView(R.layout.activity_login_user_m);
         mainActivity = this;
         initComponents();
-
     }
     private void initComponents(){
         edtEmail = findViewById(R.id.edtEmail);
@@ -46,9 +45,9 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
             public void onClick(View v) {
                 //Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
                 //sPeliculas.getDatosPeliculas();
-                User user = new User();
-                user.setUsername("akkarihdez@gmail.com");
-                user.setToken("1234");
+                User user = new User("", "");
+                //user.se("akkarihdez@gmail.com");
+                user.setPassword("1234");
                 presenter.login(user);
             }
         });
@@ -57,7 +56,7 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
 
     @Override
     public void successLogin(User user) {
-        Toast.makeText(mainActivity, user.getUsername(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(mainActivity, user.getPassword(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

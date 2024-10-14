@@ -4,8 +4,10 @@ import com.example.loginandroid_29_09_2023.login_user.model.data.MyData;
 import com.example.loginandroid_29_09_2023.lstMov.data.DataMovies;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -16,7 +18,7 @@ public interface ApiService {
               "Content-Type: application/json"
       })
 
-      Call<MyData> getDataUser(@Query("ACTION") String action);
+      // Call<MyData> getDataUser(@Query("ACTION") String action);
       /*@GET("MyServlet")
         Call<MyData> getDataUser(@Query("ACTION") String action,
                                  @Query("EMAIL") String email,
@@ -43,7 +45,13 @@ public interface ApiService {
 
         /*
         @FormUrlEncoded
-        @POST("/login")
-        Call<ApiResponse> login(@Field("username") String username, @Field("password") String password);
+          @POST("/login")
+          Call<ApiResponse> login(@Field("username") String username,
+          @Field("password") String password);
     */
+
+          @POST("/login")
+          Call<ApiResponse> login(@Field("email") String email,
+                                  @Field("password") String password);
+
 }
