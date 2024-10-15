@@ -45,7 +45,7 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
             public void onClick(View v) {
                 //Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
                 //sPeliculas.getDatosPeliculas();
-                User user = new User("", "");
+                User user = new User("", "", "");
                 //user.se("akkarihdez@gmail.com");
                 user.setPassword("1234");
                 presenter.login(user);
